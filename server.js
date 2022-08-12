@@ -65,15 +65,15 @@ app.use(express.urlencoded({
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/yarns/:id', (req, res) => {
+app.put('/homepages/:id', (req, res) => {
     Yarn.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
-      res.redirect('/yarns')
+      res.redirect('/homepages')
     })
 });
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/yarns/:id/edit', (req, res) => {
+app.get('/homepages/:id/edit', (req, res) => {
     Yarn.findById(req.params.id, (err, foundYarn) => {
         res.render(
           'edit.ejs',
@@ -87,15 +87,15 @@ app.get('/yarns/:id/edit', (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-app.delete('/yarns/:id', (req, res) => {
+app.delete('/homepages/:id', (req, res) => {
     Yarn.findByIdAndRemove(req.params.id, (error, data) => {
-        res.redirect('/yarns');
+        res.redirect('/homepages');
     })
 })
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/yarns/seed', (req, res) => {
+app.get('/homepages/seed', (req, res) => {
     Yarn.create(
       seed,
       (error, data) => {
@@ -103,13 +103,13 @@ app.get('/yarns/seed', (req, res) => {
           console.log('Yarn added to stash.');
       }
     )
-    res.redirect('/yarns')
+    res.redirect('/homepages')
 });
 
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/yarns/new', (req, res) => {
+app.get('/homepages/new', (req, res) => {
     res.render('new.ejs');
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ app.get('/yarns/new', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 
-app.get('/yarns/:id', (req, res) => {
+app.get('/homepages/:id', (req, res) => {
   Yarn.findById (req.params.id, (error, foundYarn) => {
     res.render(
       'show.ejs',
@@ -131,9 +131,9 @@ app.get('/yarns/:id', (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-app.post('/yarns', (req, res) => {
+app.post('/homepages', (req, res) => {
   Yarn.create(req.body, (error, createdYarn) => {
-      res.redirect('/yarns');
+      res.redirect('/homepages');
 
     })
 
@@ -141,11 +141,11 @@ app.post('/yarns', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/yarns', (req, res) => {
-  Yarn.find({},(error, yarnStash) => {
+app.get('/homepages', (req, res) => {
+  Yarn.find({},(error, homepageStash) => {
     res.render('index.ejs',
     {
-      stash:yarnStash
+      stash:homepageStash
     }
   )
 })
@@ -167,7 +167,7 @@ app.get('/yarns', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-mongoose.connect('mongodb://localhost:27017/yarn', () => {
+mongoose.connect('mongodb://localhost:27017/homepage', () => {
   console.log('The connection has been established');
 })
 //___________________

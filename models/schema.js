@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const yarnSchema = new mongoose.Schema({
+const homepageSchema = new mongoose.Schema({
   name: {type: String, required: true},
   color: {type: String, required: true},
   weight: {type: String, required: true},
@@ -9,6 +9,6 @@ const yarnSchema = new mongoose.Schema({
   qty: {type: Number}
 })
 
-const Yarn = mongoose.model('Yarn', yarnSchema)
+const Yarn = mongoose.model('Yarn', homepageSchema)
 
 module.exports = Yarn;

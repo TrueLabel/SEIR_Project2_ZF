@@ -1,9 +1,6 @@
 {
-  "name": "seir_project2_zf",
+  "name": "homepage",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.16.0"
-  },
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -14,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/TrueLabel/SEIR_Project2_ZF.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
