@@ -7,7 +7,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
-const Yarn = require('./models/schema.js');
+const Homepage = require('./models/schema.js');
 const seed = require('./models/seed.js');
 //___________________
 //Port
@@ -51,7 +51,13 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  Homepage.find({},(error, homepageQuotes) => {
+    res.render('index.ejs',
+    {
+      quotes:homepageQuotes
+    }
+  )
+})
 });
 
 
@@ -66,7 +72,7 @@ app.use(express.urlencoded({
 
 ////////////////////////////////////////////////////////////////////////////////
 app.put('/homepages/:id', (req, res) => {
-    Yarn.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
+    Homepage.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
       res.redirect('/homepages')
     })
 });
@@ -74,11 +80,11 @@ app.put('/homepages/:id', (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/homepages/:id/edit', (req, res) => {
-    Yarn.findById(req.params.id, (err, foundYarn) => {
+    Homepage.findById(req.params.id, (err, foundHomepage) => {
         res.render(
           'edit.ejs',
           {
-            stash: foundYarn
+            quotes: foundHomepage
           }
         )
     })
@@ -88,7 +94,7 @@ app.get('/homepages/:id/edit', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 app.delete('/homepages/:id', (req, res) => {
-    Yarn.findByIdAndRemove(req.params.id, (error, data) => {
+    Homepage.findByIdAndRemove(req.params.id, (error, data) => {
         res.redirect('/homepages');
     })
 })
@@ -96,11 +102,11 @@ app.delete('/homepages/:id', (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/homepages/seed', (req, res) => {
-    Yarn.create(
+    Homepage.create(
       seed,
       (error, data) => {
           if (error) console.log(error.message);
-          console.log('Yarn added to stash.');
+          console.log('Homepage added to quotes.');
       }
     )
     res.redirect('/homepages')
@@ -118,11 +124,11 @@ app.get('/homepages/new', (req, res) => {
 
 
 app.get('/homepages/:id', (req, res) => {
-  Yarn.findById (req.params.id, (error, foundYarn) => {
+  Homepage.findById (req.params.id, (error, foundHomepage) => {
     res.render(
       'show.ejs',
       {
-        stash: foundYarn
+        quotes: foundHomepage
       }
     )
   })
@@ -132,7 +138,7 @@ app.get('/homepages/:id', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 app.post('/homepages', (req, res) => {
-  Yarn.create(req.body, (error, createdYarn) => {
+  Homepage.create(req.body, (error, createdHomepage) => {
       res.redirect('/homepages');
 
     })
@@ -142,10 +148,10 @@ app.post('/homepages', (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/homepages', (req, res) => {
-  Yarn.find({},(error, homepageStash) => {
+  Homepage.find({},(error, homepageQuotes) => {
     res.render('index.ejs',
     {
-      stash:homepageStash
+      quotes:homepageQuotes
     }
   )
 })

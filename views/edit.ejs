@@ -5,14 +5,13 @@
     <title>Edit</title>
   </head>
   <body>
-    <h1>Edit Stash Yarn</h1>
-    <form action='/yarns/<%=stash.id%>?_method=PUT' method='POST'>
-      Name: <input type="text" name="name" value='<%=stash.name%>'/><br/>
-      Color: <input type="text" name="color" value='<%=stash.color%>'/><br/>
-      Weight: <input type="text" name="weight" value='<%=stash.weight%>'/><br/>
-      Yards: <input type="number" name="yards" value='<%=stash.yards%>'/><br/>
-      purchaseDate: <input type="date" name="purchaseDate" value='<%=stash.purchaseDate%>'/><br/>
-      Number of Skeins: <input type="number" name="qty" value='<%=stash.qty%>'/><br/>
+    <h1>Edit Quote</h1>
+    <form action='/homepages/<%=quotes.id%>?_method=PUT' method='POST'>
+      Quote: <input type="text" name="quote" value='<%=quotes.quote%>'/><br/>
+      Who: <input type="text" name="who" value='<%=quotes.who%>'/><br/>
+      When: <input type="text" name="when" value='<%=quotes.when%>'/><br/>
+      Where: <input type="text" name="where" value='<%=quotes.where%>'/><br/>
+      Fact Checked: <input type="checkbox" name="factChecked" value='<%=quotes.factChecked%>'/><br/>
       <br/>
 
       <input type='submit' name='' value='Submit Changes'/>

@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
 const homepageSchema = new mongoose.Schema({
-  name: {type: String, required: true},
-  color: {type: String, required: true},
-  weight: {type: String, required: true},
-  yards: {type: Number, required: true},
-  purchaseDate: {type: Date},
-  qty: {type: Number}
+  quote: {type: String, required: true},
+  who: {type: String},
+  when: {type: String},
+  where: {type: Number},
+  factChecked: {type: Boolean}
 })
 
-const Yarn = mongoose.model('Yarn', homepageSchema)
+const Homepage = mongoose.model('Homepage', homepageSchema)
 
-module.exports = Yarn;
+module.exports = Homepage;

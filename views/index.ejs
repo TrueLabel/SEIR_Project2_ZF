@@ -5,7 +5,7 @@
     <title>Index</title>
   </head>
   <body>
-    <h1>Current Stash</h1>
+    <h1>Current Quotes</h1>
 
     <nav>
       <button type="button"><a href="/homepages/new">Create New</a></button>
@@ -20,15 +20,15 @@
         <th> Skeins</th>
         <th> Edit</th>
       </tr>
-      <% for(let i = 0; i < stash.length; i++){ %>
+      <% for(let i = 0; i < quotes.length; i++){ %>
         <tr>
-          <td><a href="/homepages/<%=stash[i].id%>"><%=stash[i].name%></a></td>
-          <td><%=stash[i].color%></td>
-          <td><%=stash[i].weight%></td>
-          <td><%=stash[i].yards%></td>
-          <td><%=stash[i].qty%></td>
-          <td><a href="/homepages/<%=stash[i].id%>/edit">Edit</a></td>
-            <td><form action = "/homepages/<%=stash[i].id%>?_method=DELETE" method="POST">
+          <td><a href="/homepages/<%=quotes[i].id%>"><%=quotes[i].quote%></a></td>
+          <td><%=quotes[i].quote%></td>
+          <td><%=quotes[i].who%></td>
+          <td><%=quotes[i].when%></td>
+          <td><%=quotes[i].where%></td>
+          <td><a href="/homepages/<%=quotes[i].id%>/edit">Edit</a></td>
+            <td><form action = "/homepages/<%=quotes[i].id%>?_method=DELETE" method="POST">
               <input type="submit" value="DELETE">
             </form>
           </td>
