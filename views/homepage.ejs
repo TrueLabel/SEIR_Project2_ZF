@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Message in a Bottle</title>
+    <link rel="stylesheet" href="global.css">
   </head>
   <header>
     <%- include('../partials/header') %>
-    <h1>Homepage / needs google search bar</h1>
   </header>
   <body>
+
     <div class="">
-<br>
 
 <% random=Math.floor(Math.random()*quotes.length) %>
 
 <h2><%=quotes[random].quote%></h2>
-<h2>- <%=quotes[random].who%></h2>
+<h2>-<%=quotes[random].who%></h2>
 <h3><%=quotes[random].when%></h3>
 <h3><%=quotes[random].where%></h3>
 <h4>Fact Checked</h4>
@@ -23,14 +23,19 @@
 
 <button type="button"><a href="/homepage/<%=quotes[random].id%>/edit">Edit this bottle</a></button>
     </div>
+
 <br>
+
 <form action = "/homepage/<%=quotes[random].id%>?_method=DELETE" method="POST">
   <input type="submit" value="DELETE">
 </form>
 
+<br>
+
+<button type ="button"><a hreft="https://mail.google.com/mail"> Gmail </a></button>
+
 <script async src="https://cse.google.com/cse.js?cx=361e1d526b9834514">
 </script>
-<div class="gcse-searchresults-only"></div>
 <div class="gcse-search"></div>
   </body>
 </html>
