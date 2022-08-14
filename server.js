@@ -9,6 +9,7 @@ const db = mongoose.connection;
 require('dotenv').config()
 const Homepage = require('./models/schema.js');
 const seed = require('./models/seed.js');
+
 //___________________
 //Port
 //___________________
@@ -50,9 +51,9 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
+app.get('/homepage' , (req, res) => {
   Homepage.find({},(error, homepageQuotes) => {
-    res.render('index.ejs',
+    res.render('homepage.ejs',
     {
       quotes:homepageQuotes
     }
@@ -71,15 +72,7 @@ app.use(express.urlencoded({
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.put('/homepages/:id', (req, res) => {
-    Homepage.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
-      res.redirect('/homepages')
-    })
-});
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-app.get('/homepages/:id/edit', (req, res) => {
+app.get('/homepage/:id/edit', (req, res) => {
     Homepage.findById(req.params.id, (err, foundHomepage) => {
         res.render(
           'edit.ejs',
@@ -92,16 +85,24 @@ app.get('/homepages/:id/edit', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
+app.put('/homepage/:id', (req, res) => {
+    Homepage.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
+      res.redirect('/homepage/index')
+    })
+});
+////////////////////////////////////////////////////////////////////////////////
 
-app.delete('/homepages/:id', (req, res) => {
+////////////////////////////////////////////////////////////////////////////////
+
+app.delete('/homepage/:id', (req, res) => {
     Homepage.findByIdAndRemove(req.params.id, (error, data) => {
-        res.redirect('/homepages');
+        res.redirect('/homepage/index');
     })
 })
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/homepages/seed', (req, res) => {
+app.get('/homepage/seed', (req, res) => {
     Homepage.create(
       seed,
       (error, data) => {
@@ -109,37 +110,38 @@ app.get('/homepages/seed', (req, res) => {
           console.log('Homepage added to quotes.');
       }
     )
-    res.redirect('/homepages')
+    res.redirect('/homepage')
 });
 
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/homepages/new', (req, res) => {
+app.get('/homepage/new', (req, res) => {
     res.render('new.ejs');
 });
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 
+//
+// app.get('/homepage/:id', (req, res) => {
+//   Homepage.findById (req.params.id, (error, foundHomepage) => {
+//     res.render(
+//       'show.ejs',
+//       {
+//         quotes: foundHomepage
+//       }
+//     )
+//   })
+// });
 
-app.get('/homepages/:id', (req, res) => {
-  Homepage.findById (req.params.id, (error, foundHomepage) => {
-    res.render(
-      'show.ejs',
-      {
-        quotes: foundHomepage
-      }
-    )
-  })
-});
+// Show pages is the homepage
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-
-app.post('/homepages', (req, res) => {
+app.post('/homepage', (req, res) => {
   Homepage.create(req.body, (error, createdHomepage) => {
-      res.redirect('/homepages');
+      res.redirect('/homepage');
 
     })
 
@@ -147,7 +149,7 @@ app.post('/homepages', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-app.get('/homepages', (req, res) => {
+app.get('/homepage/index', (req, res) => {
   Homepage.find({},(error, homepageQuotes) => {
     res.render('index.ejs',
     {

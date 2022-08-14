@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Message in a Bottle</title>
+  </head>
+  <header>
+    <%- include('../partials/header') %>
+  </header>
+  <body>
+    <h1>Homepage / needs google search bar</h1>
+    <div class="">
+
+<br>
+
+<% random=Math.floor(Math.random()*quotes.length) %>
+
+<h5>Quote</h5>
+<p><%=quotes[random].quote%></p>
+<h5>Who</h5>
+<p><%=quotes[random].who%></p>
+<h5>When</h5>
+<p><%=quotes[random].when%></p>
+<h5>Where</h5>
+<p><%=quotes[random].where%></p>
+<h5>Fact Checked</h5>
+<p><%=quotes[random].factChecked%></p>
+
+<button type="button"><a href="/homepage/edit">Edit this bottle</a></button>
+
+    </div>
+
+
+  </body>
+</html>

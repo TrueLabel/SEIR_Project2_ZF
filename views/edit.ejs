@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <title>Edit</title>
   </head>
+  <header>
+<%- include('../partials/header') %>
+  </header>
   <body>
     <h1>Edit Quote</h1>
-    <form action='/homepages/<%=quotes.id%>?_method=PUT' method='POST'>
+    <form action='/homepage/<%=quotes.id%>?_method=PUT' method='POST'>
       Quote: <input type="text" name="quote" value='<%=quotes.quote%>'/><br/>
       Who: <input type="text" name="who" value='<%=quotes.who%>'/><br/>
       When: <input type="text" name="when" value='<%=quotes.when%>'/><br/>
@@ -14,7 +17,7 @@
       Fact Checked: <input type="checkbox" name="factChecked" value='<%=quotes.factChecked%>'/><br/>
       <br/>
 
-      <input type='submit' name='' value='Submit Changes'/>
+      <input type='submit' value='Submit Changes'/>
     </form>
   </body>
 </html>

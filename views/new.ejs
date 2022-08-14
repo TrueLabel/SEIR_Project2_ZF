@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <title>New</title>
   </head>
+  <header>
+<%- include('../partials/header') %>
+  </header>
   <body>
     <div class = ''>
     <h1>Add to Quotes</h1>
-      <form action="/homepages" method="POST">
+      <form action="/homepage" method="POST">
         <h6>Put your quote in here. (items with * are required)</h6>
         *Quote*: <input type="text" name="quote" placeholder='Your quote here'/><br/>
         Who: <input type="text" name="who" placeholder='Who said it'/><br/>
