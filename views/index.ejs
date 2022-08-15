@@ -2,20 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Index</title>
+    <title>Bottle Library</title>
+    <link rel="stylesheet" href="/global.css">
   </head>
   <header>
-<%- include('../partials/header') %>
+    <%- include('../partials/header') %>
   </header>
   <body>
     <h1>Current Quotes</h1>
-
-    <nav>
-      <button type="button"><a href="/homepage/new">Create New</a></button>
-    </nav>
-
+    <div>
     <table>
-      <tr>
+      <tr class = 'trheader'>
         <th> Quotes</th>
         <th> Who</th>
         <th> When</th>
@@ -25,7 +22,7 @@
       </tr>
       <% for(let i = 0; i < quotes.length; i++){ %>
         <tr>
-          <td><a href="/homepage/<%=quotes[i].id%>"><%=quotes[i].quote%></a></td>
+          <td><%=quotes[i].quote%></td>
           <td><%=quotes[i].who%></td>
           <td><%=quotes[i].when%></td>
           <td><%=quotes[i].where%></td>
@@ -38,12 +35,6 @@
         </tr>
     <% } %>
       </table>
-
-      <nav>
-        <button type="button"><a href="/homepage/new">Create New</a></button>
-      </nav>
-
-
-
+      </div>
   </body>
 </html>
