@@ -9,6 +9,7 @@ const db = mongoose.connection;
 require('dotenv').config()
 const Homepage = require('./models/schema.js');
 const seed = require('./models/seed.js');
+const jsdom = require('jsdom');
 
 //___________________
 //Port
@@ -35,10 +36,6 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //___________________
 //Middleware
 //___________________
-const Parser = require("body-parser");
-app.use(Parser.urlencoded({
-     extended: true
-}));
 //use public folder for static assets
 app.use(express.static('public'));
 

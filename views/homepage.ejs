@@ -14,20 +14,18 @@
 
 <% random=Math.floor(Math.random()*quotes.length) %>
 
-<h2><%=quotes[random].quote%> <br> -<% if(quotes[random].who === ''){ %>
+<h2 id = 'quote'><%=quotes[random].quote%> <br> -<% if(quotes[random].who === ''){ %>
 Unknown
 <% } else { %>
 <%=quotes[random].who%>
 <% } %></h2>
-
-<h3><%=quotes[random].when%></h3>
-<h3><%=quotes[random].where%></h3>
-<h4>Fact Checked</h4>
-<p><% if(quotes[random].factChecked === true){ %>
+<div id = "wherewhen">
+<p><%=quotes[random].when%> <%=quotes[random].where%></p> <p>Fact Checked? <% if(quotes[random].factChecked === true){ %>
 This statement has been checked to be true or at least the statement is an opinion and the information for that opinion is accurate according to a third party.
 <% } else { %>
 This statement or its related informaion has not been shown to be accurate by a third party.
 <% } %></p>
+</div>
 
 <button type="button"><a href="/homepage/<%=quotes[random].id%>/edit">Edit this bottle</a></button>
     </div>
@@ -40,7 +38,7 @@ This statement or its related informaion has not been shown to be accurate by a 
 
 <br>
 
-<button type ="button"><a hreft="https://mail.google.com"> Gmail </a></button>
+
 <div id = 'googlebar'>
 <script async src="https://cse.google.com/cse.js?cx=361e1d526b9834514">
 </script>
@@ -48,4 +46,5 @@ This statement or its related informaion has not been shown to be accurate by a 
 </div>
 
   </body>
+  <%- include('../partials/jquery') %>
 </html>
