@@ -35,7 +35,10 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //___________________
 //Middleware
 //___________________
-
+const Parser = require("body-parser");
+app.use(Parser.urlencoded({
+     extended: true
+}));
 //use public folder for static assets
 app.use(express.static('public'));
 
@@ -99,7 +102,7 @@ app.get('/homepage/new', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 app.post('/homepage/index', (req, res) => {
   Homepage.create(req.body, (error, createdHomepage) => {
-      res.redirect('/homepage/index');
+    res.redirect('/homepage/index');
     })
   });
 ////////////////////////////////////////////////////////////////////////////////

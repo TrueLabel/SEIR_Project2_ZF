@@ -4,7 +4,7 @@ const homepageSchema = new mongoose.Schema({
   quote: {type: String, required: true},
   who: {type: String},
   when: {type: String},
-  where: {type: Number},
+  where: {type: String},
   factChecked: {type: Boolean}
 })
 
