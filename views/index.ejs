@@ -9,15 +9,15 @@
     <%- include('../partials/header') %>
   </header>
   <body>
-    <h1>Current Quotes</h1>
+    <h1>Current Bottles</h1>
     <div>
-    <table>
+    <table border=1 frame=void rules=rows>
       <tr class = 'trheader'>
         <th> Quotes</th>
         <th> Who</th>
         <th> When</th>
         <th> Where</th>
-        <th> Fact Checked</th>
+        <th> Validated</th>
         <th> Edit</th>
       </tr>
       <% for(let i = 0; i < quotes.length; i++){ %>
@@ -26,8 +26,12 @@
           <td><%=quotes[i].who%></td>
           <td><%=quotes[i].when%></td>
           <td><%=quotes[i].where%></td>
-          <td><%=quotes[i].factChecked%></td>
-          <td><a href="/homepage/<%=quotes[i].id%>/edit">Edit</a></td>
+          <td><% if(quotes[i].factChecked === true){ %>
+          Yes
+          <% } else { %>
+          No
+          <% } %></td>
+          <td><button class='button'><a href="/homepage/<%=quotes[i].id%>/edit">Edit</a></button></td>
             <td><form action = "/homepage/<%=quotes[i].id%>?_method=DELETE" method="POST">
               <input type="submit" value="DELETE">
             </form>

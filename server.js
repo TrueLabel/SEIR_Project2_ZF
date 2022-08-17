@@ -52,7 +52,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //localhost:3000
 app.delete('/homepage/:id', (req, res) => {
     Homepage.findByIdAndRemove(req.params.id, (error, data) => {
-        res.redirect('/homepage/index');
+        res.redirect('/');
     })
 })
 ////////////////////////////////////////////////////////////////////////////////
@@ -73,7 +73,7 @@ app.get('/homepage/:id/edit', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 app.put('/homepage/:id', (req, res) => {
     Homepage.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
-      res.redirect('/homepage/index')
+      res.redirect('/')
     })
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +99,7 @@ app.get('/homepage/new', (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 app.post('/homepage/index', (req, res) => {
   Homepage.create(req.body, (error, createdHomepage) => {
-    res.redirect('/homepage/index');
+    res.redirect('/');
     })
   });
 ////////////////////////////////////////////////////////////////////////////////

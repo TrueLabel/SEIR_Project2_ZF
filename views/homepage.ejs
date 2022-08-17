@@ -20,30 +20,42 @@ Unknown
 <%=quotes[random].who%>
 <% } %></h2>
 <div id = "wherewhen">
-<p><%=quotes[random].when%> <%=quotes[random].where%></p> <p>Fact Checked? <% if(quotes[random].factChecked === true){ %>
+<p><%=quotes[random].when%> <%=quotes[random].where%></p> <p><em>Validated?</em> <% if(quotes[random].factChecked === true){ %>
 This statement has been checked to be true or at least the statement is an opinion and the information for that opinion is accurate according to a third party.
 <% } else { %>
 This statement or its related informaion has not been shown to be accurate by a third party.
 <% } %></p>
 </div>
 
-<button type="button"><a href="/homepage/<%=quotes[random].id%>/edit">Edit this bottle</a></button>
+<button class ='button' type="button"><a href="/homepage/<%=quotes[random].id%>/edit">Edit this bottle</a></button>
     </div>
 
 <br>
 
-<form action = "/homepage/<%=quotes[random].id%>?_method=DELETE" method="POST">
+<form class = 'button' action = "/homepage/<%=quotes[random].id%>?_method=DELETE" method="POST">
   <input type="submit" value="DELETE this bottle">
 </form>
 
 <br>
 
 
-<div id = 'googlebar'>
-<script async src="https://cse.google.com/cse.js?cx=361e1d526b9834514">
-</script>
-<div class="gcse-search"></div>
+
+<!-- <form action = "https://www.google.com/search" class = "googlebar">
+  <a href="#"></a>
+  <input placeholder = "Search Google" type = "text"/>
+</form> -->
+
+<!-- <form className='whsearchbar' action='https://www.wowhead.com/search'>
+                <a href="#"></a>
+                <input placeholder='search wowhead' type='text' name='q' />
+            </form> -->
+
+<div id = "googlebar">
+  <script async src="https://cse.google.com/cse.js?cx=044ba375904f24501">
+  </script>
+  <div class="gcse-searchbox-only"></div>
 </div>
+
 
   </body>
   <%- include('../partials/jquery') %>

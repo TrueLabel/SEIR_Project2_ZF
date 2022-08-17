@@ -9,13 +9,13 @@
     <%- include('../partials/header') %>
   </header>
   <body>
-    <h1>Edit Quote</h1>
+    <h1>Edit Bottle</h1>
     <form action="/homepage/<%=quotes.id%>?_method=PUT" method='POST'>
       Quote: <input type="text" name="quote" value='<%=quotes.quote%>'/><br/>
       Who: <input type="text" name="who" value='<%=quotes.who%>'/><br/>
       When: <input type="text" name="when" value='<%=quotes.when%>'/><br/>
       Where: <input type="text" name="where" value='<%=quotes.where%>'/><br/>
-      Fact Checked: <input type="checkbox" name="factChecked" value='<%=quotes.factChecked%>'/><br/>
+      Validate?: <input type="checkbox" name="factChecked" value='<%=quotes.factChecked%>'/><br/>
       <br/>
 
       <input type='submit' value='Submit Changes'/>
