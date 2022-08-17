@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Message in a Bottle</title>
     <link rel="stylesheet" href="/global.css">
+    <%- include('../partials/head') %>
   </head>
   <header>
     <%- include('../partials/header') %>
@@ -20,7 +21,7 @@ Unknown
 <%=quotes[random].who%>
 <% } %></h2>
 <div id = "wherewhen">
-<p><%=quotes[random].when%> <%=quotes[random].where%></p> <p><em>Validated?</em> <% if(quotes[random].factChecked === true){ %>
+<p><%=quotes[random].when%> <%=quotes[random].where%></p> <p><em>Validated? </em> --> <% if(quotes[random].factChecked === true){ %>
 This statement has been checked to be true or at least the statement is an opinion and the information for that opinion is accurate according to a third party.
 <% } else { %>
 This statement or its related informaion has not been shown to be accurate by a third party.

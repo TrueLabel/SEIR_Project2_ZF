@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Bottle Library</title>
     <link rel="stylesheet" href="/global.css">
+    <%- include('../partials/head') %>
   </head>
   <header>
     <%- include('../partials/header') %>
@@ -11,7 +12,7 @@
   <body>
     <h1>Current Bottles</h1>
     <div>
-    <table border=1 frame=void rules=rows>
+    <table id = 'library' border=1 frame=void rules=rows>
       <tr class = 'trheader'>
         <th> Quotes</th>
         <th> Who</th>

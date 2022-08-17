@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <title>Create Bottle</title>
     <link rel="stylesheet" href="/global.css">
+    <%- include('../partials/head') %>
   </head>
   <header>
     <%- include('../partials/header') %>
   </header>
   <body>
     <h1>Send out a Bottle</h1>
-      <form action="/homepage/index" method="POST">
-        <h6>Put your quote in here. (items with * are required)</h6>
-        *Quote*: <input type="text" name="quote" placeholder='Your quote here'/><br/>
+      <form class = 'input' action="/homepage/index" method="POST">
+        <h4>Put your quote in here. (items with * are required)</h4>
+        *Quote*: <input class = 'inputq' type="text" name="quote" placeholder='Your quote here'/><br/>
         Who: <input type="text" name="who" placeholder='Who said it'/><br/>
         When: <input type="text" name="when" placeholder='When was it said'/><br/>
         Where: <input type="text" name="where" placeholder='Where was it said'/><br/>
